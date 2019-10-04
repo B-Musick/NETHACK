@@ -12,3 +12,5 @@ class Item extends Content{
         return 0;
     }
 }
+
+// Subclasses of Item are object the player can touch Amulet, HealthPotion, Trap

@@ -1,6 +1,8 @@
 // var Wall = require('./Wall.js');
 // var OpenTile = require('./OpenTile.js');
-// var Tile = require('Tile.js');
+// var Tile = require('./Tile.js');
+// let Potion = require('./Items/Potion.js');
+
 
 class Game{
     constructor(){
@@ -15,10 +17,11 @@ class Game{
         let board = '';
         this.board.forEach((row,i)=>{
             if(i>0){
-                board+='\n';
+                board+='<br>';
             }
             row.forEach(val=>{
                 board+=val.getSymbol();
+                
             })
         })
         console.log(board);
@@ -28,6 +31,9 @@ class Game{
 }
 
 let game = new Game();
-game.printBoard();
+let body = document.querySelector('body');
+let board = game.printBoard();
+
+body.innerHTML = board;
 
 

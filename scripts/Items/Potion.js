@@ -1,3 +1,5 @@
+// let Item = require('../Item.js');
+
 class Potion extends Item {
     constructor() {
         super('h');

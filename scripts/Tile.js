@@ -1,5 +1,9 @@
 class Tile{
+    // Represents elements of the 2d array thats the board
     constructor(symbol,isPassable,Content=null){
+        // symbol = string that represents the tile
+        // isPassable = boolean indicating player can move onto
+        // If there is no content, then value should be null
         if(!symbol||isPassable === undefined){
             throw new TypeError('Didnt define something')
         }
@@ -12,6 +16,7 @@ class Tile{
         }
     }
     getSymbol(){
+        // Fetches symbol that should be displayed
         if(this.tileContent){
             // If there is content attached to this tile, return the symbol 
             // of this content
@@ -31,6 +36,7 @@ class Tile{
     }
     getContent(){
         // Retrieve the content from this tile
+        
         return this.tileContent;
     }
     setContent(content){

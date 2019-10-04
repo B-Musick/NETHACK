@@ -2,7 +2,8 @@
 
 class OpenTile extends Tile {
     constructor(content=null) {
-        // Wall is passable, symbol is '.'
+        // OpenTile is passable, symbol is '.'
+        // Accepts content, if no content passed then content = null
         super('.', true,content); // Inherits from tile class (superclass)
     }
 }

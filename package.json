@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Just need to serve the JSON file",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/B-Musick/NETHACK.git"
+  },
+  "author": "Brendan Musick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/B-Musick/NETHACK/issues"
+  },
+  "homepage": "https://github.com/B-Musick/NETHACK#readme"
+}

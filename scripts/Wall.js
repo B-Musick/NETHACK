@@ -6,3 +6,4 @@ class Wall extends Tile {
         super('#', false); // Inherits from tile class (superclass)
     }
 }
+
