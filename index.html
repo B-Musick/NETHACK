@@ -4,63 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.min.js"></script>
     <title>NetHack</title>
 </head>
 <body>
   <div>
     <input id='fileItem' type="file" id="input">
   </div>
-        <script src="scripts/Tile.js"></script>
-        <script src="scripts/OpenTile.js"></script>
-        <script src="scripts/Wall.js"></script>
-        
-        <script src="scripts/Content.js"></script>
-        <script src="scripts/Item.js"></script>
-        <script src="scripts/Items/Amulet.js"></script>
-        <script src="scripts/Items/Potion.js"></script>
-        <script src="scripts/Items/Trap.js"></script>
-        <script src="scripts/Combatant.js"></script>
-        <script src="scripts/Combatants/Troll.js"></script>
-        <script src="scripts/Combatants/GreaterTroll.js"></script>
-        
-        <script src="scripts/Combatants/Player.js"></script>
-        
-        <script src="scripts/Gameboard.js"></script>
-        <!-- <script src='app.js'></script> -->
-    <!-- <input type="file" id="fileinput" /> -->
-<!-- <script src="app.js">
-  // readSingleFile = async (evt) =>{
-  //   //Retrieve the first (and only!) File from the FileList object
-  //   var f = evt.target.files[0]; 
-
-  //   if (f) {
-  //     var r = new FileReader();
-  //     r.onload = await function(e) { 
-  //         var contents = e.target.result;
-  //         console.log(contents)
-  //       alert( "Got the file.n" 
-  //             +"name: " + f.name + "n"
-  //             +"type: " + f.type + "n"
-  //             +"size: " + f.size + " bytesn"
-  //             + "starts with: " + contents.substr(1, contents.indexOf("n"))
-  //       );  
-  //       return new Gameboard(contents);
-  //     }
-      
-      
-  //   } else { 
-  //     alert("Failed to load file");
-  //   }
-  // }
-
-  // document.getElementById('fileinput').addEventListener('change', (e)=>{
-  //     let board = readSingleFile(e);
-  //     console.log(board);
-  //   }, false);
-</script> -->
-
-
-    <script src="scripts/appPhase3.js"></script>
+  <div id="board-score-container">
+    
+    
+    
+      <svg id="board-display" width="300" height="300"></svg>
+  </div>
+  <script src="scripts/Tile.js"></script>
+  <script src="scripts/OpenTile.js"></script>
+  <script src="scripts/Wall.js"></script>
+  
+  <script src="scripts/Content.js"></script>
+  <script src="scripts/Item.js"></script>
+  <script src="scripts/Items/Amulet.js"></script>
+  <script src="scripts/Items/Potion.js"></script>
+  <script src="scripts/Items/Trap.js"></script>
+  <script src="scripts/Combatant.js"></script>
+  <script src="scripts/Combatants/Troll.js"></script>
+  <script src="scripts/Combatants/GreaterTroll.js"></script>
+  
+  <script src="scripts/Combatants/Player.js"></script>
+  <script src="scripts/Gameboard.js"></script>
+  <script src="scripts/appPhase3.js"></script>
 
 </body>
 </html>

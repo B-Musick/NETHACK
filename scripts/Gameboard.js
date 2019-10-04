@@ -4,59 +4,37 @@
 // Reads in file where first two lines is the numer of rows and columns
 // The rest of the file contains the original game state
 class Gameboard{
-    constructor(file){
+    constructor(board){
         // Takes filename as string
-        this.file = file; // 2D array of Tiles
-        this.board;
+        
+        this.board = board;
+        this.screenBody = d3.select('body');
+        this.boardDisplay =d3.select('svg');
+        // this.boardContent = {
+        //     '#': new Wall(),
+        //     '.': new OpenTile(),
+        //     'T': new GreaterTroll(),
+        //     't': new Troll(),
+        //     '@': new Player(),
+        //     'Y': new Amulet(),
+        //     'h': new Potion(),
+        //     '^': new Trap()
+        // }
 
     }
 
-    toString=()=>{
-        let boardContent = {
-            '#': new Wall(),
-            '.': new OpenTile()
-        }
-        var reader = new FileReader();
-
-        // reader.readAsText(this.board);
-        reader.readAsBinaryString(this.file);
-
-        reader.onloadend = function () {
-            // reader.result returns string with board
-            
-            // Save the resulting string
-            let boardString = reader.result;
-            // Split result into array
-            let boardArray = boardString.split('');
-            
-            let rowArray = [];
-            this.board = []; // Set constructor variable to empty array
-            for(let i = 0; i<boardArray.length;i++){
-                
-                if (boardArray[i] === '\n' && boardArray[i+1]!=='\n'){
-
-                    // If newline then dont add this to the array
-                    // Also if multiple newlines in a row then dont add them
-                    
-                    let array = [...rowArray]
-                    // Only after first line push the array
-                    
-                    this.board.push(array);
-                    
-                    rowArray = []; // Erase array
-                    
-                }
-                else if(boardArray[i]!=='\n'){
-                    // Push the content into the array if not a newline
-                    rowArray.push(boardContent[boardArray[i]]);
-                }
-            };
-            console.log(this.board);
-        }
-        // console.log(boardRead+" text")
-        // Method that will print the board
-        // Put current health at the top
+    toString(){
+        console.log(this.board)
+    }
+    setScreenBoard(){
         // console.log(this.board)
+        this.boardDisplay.append('text')
+            .text(this.board[0][0].getSymbol())
+            .attr('x', 10 + "")
+            // Need to add 3 so in center of block vertically
+            .attr('y', 10 + "")
+            .style('fill', 'black')
+            .style('text-align', 'center');
     }
 }
 
@@ -65,27 +43,69 @@ const inputElement = document.getElementById("fileItem");
 inputElement.addEventListener("change", (e)=>{
     var file = document.getElementById('fileItem').files[0];
     // const fileList = this.files; /* now you can work with the file list */
-    let gameboard = new Gameboard(file);
     
-    gameboard.toString();
+    createGameBoard(file);
+    // gameboard.toString();
+    // gameboard.setScreenBoard();
 })
 
-// var fileInput = document.querySelector('input[type="file"]');
+createGameBoard=(file)=>{
+    // Take in the file when it is input and create a board
+    let boardContent = {
+        '#': new Wall(),
+        '.': new OpenTile(),
+        'T': new GreaterTroll(),
+        't': new Troll(),
+        '@': new Player(),
+        'Y': new Amulet(),
+        'h': new Potion(),
+        '^': new Trap()
 
-// function read(callback) {
-//     var file = fileInput.files.item(0);
-//     var reader = new FileReader();
+    }
+    var reader = new FileReader();
 
-//     reader.onload = function () {
-//         console.log('hi');
+    reader.readAsBinaryString(file);
+    let board = []; // Set constructor variable to empty array
+    reader.onloadend = function () {
+        // reader.result returns string with board
 
-//         callback(reader.result);
+        // Save the resulting string
+        let boardString = reader.result;
+        // Split result into array
+        let boardArray = boardString.split('');
 
-//     }
+        let rowArray = [];
+        
+        for (let i = 0; i < boardArray.length; i++) {
 
-//     let text = reader.readAsText(file);
-//     console.log('hi');
-// }
+            if (boardArray[i] === '\n' && boardArray[i + 1] !== '\n') {
+
+                // If newline then dont add this to the array
+                // Also if multiple newlines in a row then dont add them
+                let array = [...rowArray]
+                // Only after first line push the array
+
+                board.push(array);
+
+                rowArray = []; // Erase array
+
+            }
+            else if (boardArray[i] !== '\n') {
+                // Push the content into the array if not a newline
+                rowArray.push(boardContent[boardArray[i]]);
+
+
+            }
+        };
+
+    let gameboard = new Gameboard(board);
+    gameboard.toString();
+    gameboard.setScreenBoard();
+        
+    }
+    console.log(reader)
+}
+
 
 
 
